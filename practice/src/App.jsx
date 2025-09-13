@@ -1,80 +1,62 @@
-import BlogPost from "./BlogPost.jsx"
-import Productcard from "./Productcard.jsx"
-import UseAvatar from "./UseAvatar.jsx"
+//import "./APP.css"
+import { use, useState } from "react"
 function App() {
- const productName = "chocolate"
-  const price = 5000
-  const isAvailable = true
-  {/*const Name="PRAVALLIKA"
-  const course="Btech(CSE)"
-  const Rollno="24VV1A0535"
-  const BloodGroup="B+"
-  const DOB="16/08/2007"*/}
-  {/*const product=[
-    {
-       productName:"book",
-       price:5000,
-       isAvailable:true
-    },
-    {
-       productName:"pen",
-       price:3000,
-       isAvailable:true
-    },
-    {
-       productName:"iphone",
-       price:50000,
-       isAvailable:true
-    }
-  ]*/}
-  const posts = [
-    {
-      id:1,
-      author: "pravallika",
-      title: "chapter1",
-      description: "vampire"
-    }, {
-      id:2,
-      author: "pravallika",
-      title: "chapter1",
-      description: "vampire"
-    },
-    {
-      id:3,
-      author: "pravallika",
-      title: "chapter1",
-      description: "vampire"
-    }
-  ]
+  const [count,setCount]=useState(0)
+  const handleIncrement=()=>
+  {
+    setCount((prevCount)=>prevCount+1)
+    console.log(count)
+  }
+  const[email,setEmail]=useState("")
+  const[password,setPassword]=useState("")
 
-  return (
-    <div className="main1">
-
+  const [formData,setformData]=useState(
+    {
+      email:"",
+      password:""
+    }
+  )
+  
+  const handleEmail=(event)=>
+  {
+    setEmail(event.target.value)
+  }
+  const handlePassword=(event)=>
+  {
+    setPassword(event.target.value)
+  }
+  {/*const handleClick=(name)=>{
+    console.log("you clicked the button")
+    alert("hello"+name)
+  }*/}
+  const handleChange=(event)=>
+  {
+    //console.log(event.target.name)
+    //console.log(event.target.value)
+    setformData(
       {
-        posts.map((posts)=>(
-          <BlogPost
-          key={posts.id}
-          author={posts.author}
-          title={posts.title}
-          description={posts.description} 
-          />
-        )
-      )
-    }
-        {/* product.map((product)=>(
-<Productcard
-productName={product.productName}
-price={product.price}
-isAvailable={product.isAvailable}
-/>
-  )
-  )
-}
-    {/*<Productcard product={productName} cost={price} stock={true}/>
-    <Productcard product={productName} cost={price} stock={false}/>
-   {/* <UseAvatar Name={Name} Course={course} Rollno={Rollno} BloodGroup={BloodGroup}
-    DOB={DOB}/>*/}
-       </div>
+        ...formData,
+        [event.target.name]:event.target.value
+      }
+    )
+
+  }
+  const handleSubmit=(event)=>
+  {
+    event.preventDefault();
+    alert(`Email:${formData.email}\n Password:${formData.password}\nyour are logged in`)
+  }
+  return(
+    <div>
+<form onSubmit={handleSubmit}>
+  <input type="text" name="email"placeholder="type your email" onChange={handleChange}/>
+<input type="password"name="password"placeholder="type your password"onChange={handleChange}/>
+<button type="submit" onClick={handleSubmit}>login</button>
+</form>
+<p>{count}</p>
+<button onClick={handleIncrement}>Increment</button>
+
+    </div>
   )
 }
   export default App;
