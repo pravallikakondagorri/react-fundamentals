@@ -1,0 +1,23 @@
+.title{
+    font-weight: 20px;
+    color:black;
+    
+}
+.price{
+    font-weight: 20px;
+    color:blue;
+}
+.block{
+    font-weight: 50px;
+    color:green;
+}
+.block2{
+    font-weight: 50px;
+    color:red;
+}
+.main{
+    border:1px solid;
+    padding: 10px;
+    margin:20px;
+    width: 500px;
+}
