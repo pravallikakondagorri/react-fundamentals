@@ -14,7 +14,7 @@ function Productcard(object)
         <div className="main">
        <p style={titleStyle}>productName:{object.product}</p>
        <p style={priceStyle}>price:{object.cost}</p>
-       {object.isAvailable===true? <p className="block">in stock</p>:<p className="block1">not in stock</p>}
+       <p>{object.isAvailable===true? <span className="block">in stock</span>:<span className="block1">not in stock</span>}</p>
       
        </div>
 
